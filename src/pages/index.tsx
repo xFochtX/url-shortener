@@ -12,7 +12,7 @@ export default function Home() {
     const currentInput = inputRef.current;
     if(!currentInput) return;
     const url = inputRef.current.value;
-    
+    console.log('Estoy antes del fetch');
     fetch("/api/shortUrl",{
       method: 'POST',
       headers: {'Content-Type':'application/json',},
@@ -21,8 +21,10 @@ export default function Home() {
       .then(res => res.json())
       .then((data) => {
         // console.log(data);
+        console.log('Estoy en el fetch')
         setShortURL(data.shortUrl)
       });
+    console.log('Estoy después del fetch');
   };
 
   return (
