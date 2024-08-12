@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       return res.status(200).send(link);
     } catch (error) {
       console.error("Error:", error);
-      return res.status(500).send({ error: "Internal Server Error" });
+      return res.status(500).send({ error: "Internal Server Errooooooooor" });
     }
   } else {
     res.status(405).end(); // Método no permitido
