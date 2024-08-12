@@ -3,9 +3,10 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
+  console.log('Estoy al inicio del api fetch');
   if (req.method === 'POST') {
     const { url } = req.body;
-
+    console.log('Estoy al inicio del api fetch, al inicio de la autenticación POST');
     try {
       // Buscar si ya existe una entrada con la misma URL
       let link = await prisma.link.findUnique({
