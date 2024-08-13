@@ -13,15 +13,17 @@ export default function Home() {
     const currentInput = inputRef.current;
     if(!currentInput) return;
     const url = inputRef.current.value;
-    console.log('Estoy antes del fetch');
+    console.log('Estoy antes del try del fetch');
     try {
+      console.log('Estoy a punto de utilizar el fetch para llamar al api');
       const response = await fetch("/api/shortUrl",{
         method: 'POST',
         headers: {'Content-Type':'application/json',},
         body: JSON.stringify({url})
       })
+      console.log('Ya salí del fetch y estoy recibiendo el response')
       const data = await response.json();
-      console.log('Estoy en el fetch');
+      console.log('Ya tengo la data convertida del fetch');
       setShortURL(data.shortUrl);
     } catch (error) {
       console.error('Error en el fetch', error);
