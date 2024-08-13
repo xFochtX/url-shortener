@@ -8,22 +8,24 @@ export default function Home() {
   const [shortURL, setShortURL] = useState("");
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log('Estoy al inicio del handle del botón');
     e.preventDefault();
     const currentInput = inputRef.current;
     if(!currentInput) return;
     const url = inputRef.current.value;
     console.log('Estoy antes del fetch');
-    fetch("/api/shortUrl",{
-      method: 'POST',
-      headers: {'Content-Type':'application/json',},
-      body: JSON.stringify({url})
-    })
-      .then(res => res.json())
-      .then((data) => {
-        // console.log(data);
-        console.log('Estoy en el fetch')
-        setShortURL(data.shortUrl)
-      });
+    try {
+      const response = await fetch("/api/shortUrl",{
+        method: 'POST',
+        headers: {'Content-Type':'application/json',},
+        body: JSON.stringify({url})
+      })
+      const data = await response.json();
+      console.log('Estoy en el fetch');
+      setShortURL(data.shortUrl);
+    } catch (error) {
+      console.error('Error en el fetch', error);
+    }
     console.log('Estoy después del fetch');
   };
 
