@@ -18,13 +18,14 @@ export default function Home() {
       console.log('Estoy a punto de utilizar el fetch para llamar al api');
       const response = await fetch("/api/shortUrl",{
         method: 'POST',
-        headers: {'Content-Type':'application/json',},
+        headers: {'Content-Type':'application/json'},
         body: JSON.stringify({url})
       })
       console.log('Ya salí del fetch y estoy recibiendo el response')
       const data = await response.json();
       console.log('Ya tengo la data convertida del fetch');
-      setShortURL(data.shortUrl);
+      // setShortURL(data.shortUrl);
+      setShortURL(data.mensaje);
     } catch (error) {
       console.error('Error en el fetch', error);
     }
