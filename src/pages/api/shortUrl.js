@@ -3,8 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  const prueba = JSON.stringify({ mensaje: 'Ola k aze' });
-  /*
+  // const prueba = JSON.stringify({ mensaje: 'Ola k aze' });
   const { url } = req.body;
   try {
     // Buscar si ya existe una entrada con la misma URL
@@ -29,6 +28,5 @@ export default async function handler(req, res) {
     console.error("Error:", error);
     return res.status(500).send({ error: "Internal Server Errooooooooor" });
   }
-    */
 return res.status(200).send(prueba);
 }

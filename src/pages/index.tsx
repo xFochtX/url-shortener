@@ -24,8 +24,8 @@ export default function Home() {
       console.log('Ya salí del fetch y estoy recibiendo el response')
       const data = await response.json();
       console.log('Ya tengo la data convertida del fetch');
-      // setShortURL(data.shortUrl);
-      setShortURL(data.mensaje);
+      setShortURL(data.shortUrl);
+      //setShortURL(data.mensaje);
     } catch (error) {
       console.error('Error en el fetch', error);
     }
